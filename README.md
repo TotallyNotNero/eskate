@@ -29,4 +29,9 @@ The skateboard, for maximum ease-of-use, utilizes a PID controller for controlli
 chooses to use "cruise control" when selecting the button mapped to the cruise control function.
 For safety, the trigger must be held down when pressing the cruise control button. To disable,
 press the button again and the board will coast down in speed. The code for all the math in this project is
-located in the `math/` folder. The skateboard also
+located in the `math/` folder.
+
+# Links / References
+My final Minnetonka Research proposal is linked here.
+
+My blogpost running through my processes & in-depth thinkings during the skateboard's creation is linked here.
