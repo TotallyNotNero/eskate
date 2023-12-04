@@ -30,7 +30,7 @@ void initialize() {
 }
 
 void drive(double power) {
-	falcon.set(ControlMode::PercentOutput, power);
+	falcon.Set(ControlMode::PercentOutput, power);
 }
 
 /** simple wrapper for code cleanup */
