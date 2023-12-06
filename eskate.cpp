@@ -17,7 +17,7 @@ using namespace std;
 
 
 string interface = "can0";
-TalonFX falcon(1, interface);
+TalonFX falcon(0, interface);
 
 void initialize() {
 	// Set the Falcon to inverted
@@ -27,6 +27,8 @@ void initialize() {
 	// Set neutral mode to coast initially
 	// should it be brake? hmm
 	falcon.SetNeutralMode(NeutralMode::Coast);
+
+	cout << "Initialization Complete." << endl;
 }
 
 void drive(double power) {
@@ -47,9 +49,7 @@ int main() {
 
 	while (true) {
 		drive(0.2);
-
 	}
 
-	SDL_Quit();
 	return 0;
 }
