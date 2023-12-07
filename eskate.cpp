@@ -31,12 +31,17 @@ int main() {
 	delay(18000); // Delay to initialize SocketCAN first
 
 	TalonFX falcon(0, interface);
+	TalonFX falcon2(1, interface);
 
 	falcon.SetInverted(true);
 	falcon.SetNeutralMode(NeutralMode::Coast);
 
+	falcon2.SetInverted(true);
+	falcon2.SetNeutralMode(NeutralMode::Coast);
+
 	while (true) {
 		falcon.Set(ControlMode::PercentOutput, 0.2);
+		falcon2.Set(ControlMode::PercentOutput, 0.2);
 	}
 
 	return 0;
