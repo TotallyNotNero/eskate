@@ -28,20 +28,15 @@ void delay(int ms) {
 
 int main() {
 
-	delay(18000); // Delay to initialize SocketCAN first
+	delay(12000); // Delay to initialize SocketCAN first
 
-	TalonSRX falcon(0, interface);
-	TalonSRX falcon2(1, interface);
+	TalonFX falcon(0, interface);
 
 	falcon.SetInverted(true);
 	falcon.SetNeutralMode(NeutralMode::Coast);
 
-	falcon2.SetInverted(true);
-	falcon2.SetNeutralMode(NeutralMode::Coast);
-
 	while (true) {
 		falcon.Set(ControlMode::PercentOutput, 0.2);
-		falcon2.Set(ControlMode::PercentOutput, 0.2);
 	}
 
 	return 0;
