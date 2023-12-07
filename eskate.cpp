@@ -8,7 +8,7 @@
 #include <string>
 #include <thread>
 #include <unistd.h>
-#include <SDL2/SDL.h>
+// #include <SDL2/SDL.h>
 // #include <math/RTime.h>
 // #include <math/PIDController.h>
 
@@ -28,14 +28,23 @@ void delay(int ms) {
 
 int main() {
 
-	delay(12000); // Delay to initialize SocketCAN first
+	// Register the CAN Bus
+	ctre::phoenix::platform::can::RegisterCANbus(interface.c_str());
 
-	TalonFX falcon(0, interface);
+	// Delay to initialize SocketCAN first
+	delay(12000);
 
+	// Initialize the Falcon 500 with CAN ID "0"
+	TalonFX falcon(0);
+
+	// General configuraton.
+	// Set inverted so green output = forward motion.
+	// Set coast as neutral mode for 0 resistance.
 	falcon.SetInverted(true);
 	falcon.SetNeutralMode(NeutralMode::Coast);
 
 	while (true) {
+		// Continuously set the Falcon at 20% throtle output.
 		falcon.Set(ControlMode::PercentOutput, 0.2);
 	}
 
