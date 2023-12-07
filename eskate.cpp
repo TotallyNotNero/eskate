@@ -9,8 +9,8 @@
 #include <thread>
 #include <unistd.h>
 #include <SDL2/SDL.h>
-#include <math/RTime.h>
-#include <math/PIDController.h>
+// #include <math/RTime.h>
+// #include <math/PIDController.h>
 
 using namespace ctre::phoenix;
 using namespace ctre::phoenix::platform;
@@ -28,7 +28,7 @@ void delay(int ms) {
 
 int main() {
 
-	delay(800); // Delay to initialize SocketCAN first
+	delay(4000); // Delay to initialize SocketCAN first
 
 	TalonFX falcon(0, interface);
 
