@@ -28,7 +28,7 @@ void delay(int ms) {
 
 int main() {
 
-	delay(4000); // Delay to initialize SocketCAN first
+	delay(10000); // Delay to initialize SocketCAN first
 
 	TalonFX falcon(0, interface);
 
