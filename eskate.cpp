@@ -30,8 +30,8 @@ int main() {
 
 	delay(18000); // Delay to initialize SocketCAN first
 
-	TalonFX falcon(0, interface);
-	TalonFX falcon2(1, interface);
+	TalonSRX falcon(0, interface);
+	TalonSRX falcon2(1, interface);
 
 	falcon.SetInverted(true);
 	falcon.SetNeutralMode(NeutralMode::Coast);
