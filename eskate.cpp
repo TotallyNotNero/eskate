@@ -49,9 +49,6 @@ int main() {
 	falcon.SetNeutralMode(NeutralMode::Coast);
 
 	while (true) {
-
-		printf("going");
-
 		// Continuously set the Falcon at 20% throtle output.
 		falcon.Set(ControlMode::PercentOutput, 0.9);
 	}
