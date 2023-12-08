@@ -32,11 +32,15 @@ void delay(int ms) {
 int main() {
 
 	printf("Initializing CAN Bus...");
+	
+	delay(5000);
 
 	// Register the CAN Bus
 	ctre::phoenix::platform::can::RegisterCANbus(interface.c_str());
 
 	printf("Initializing Falcon 500...");
+
+	delay(5000);
 
 	// General configuraton.
 	// Set inverted so green output = forward motion.
