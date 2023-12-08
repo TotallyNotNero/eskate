@@ -29,7 +29,7 @@ void delay(int ms) {
 int main() {
 
 	// Give Phoenix a delay to initialize the library
-	delay(5000)
+	delay(5000);
 
 	// Register the CAN Bus
 	ctre::phoenix::platform::can::RegisterCANbus(interface.c_str());
