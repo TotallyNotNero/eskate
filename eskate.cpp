@@ -8,6 +8,7 @@
 #include <string>
 #include <thread>
 #include <unistd.h>
+#include "Unmanaged.h"
 // #include <SDL2/SDL.h>
 // #include <math/RTime.h>
 // #include <math/PIDController.h>
@@ -45,11 +46,12 @@ int main() {
 	// General configuraton.
 	// Set inverted so green output = forward motion.
 	// Set coast as neutral mode for 0 resistance.
-	falcon.SetInverted(true);
-	falcon.SetNeutralMode(NeutralMode::Coast);
+	falcon.SetInverted(false);
+	falcon.SetNeutralMode(NeutralMode::Brake);
 
 	while (true) {
 		// Continuously set the Falcon at 20% throtle output.
+		ctre::phoenix::unmanaged::Unmanaged::FeedEnable(1000);
 		falcon.Set(ControlMode::PercentOutput, 0.2);
 	}
 
