@@ -46,7 +46,7 @@ int main() {
 	// Set inverted so green output = forward motion.
 	// Set coast as neutral mode for 0 resistance.
 	falcon.SetInverted(false);
-	falcon.SetNeutralMode(NeutralMode::Coast);
+	falcon.SetNeutralMode(NeutralMode::Brake);
 
 	while (true) {
 		// Continuously set the Falcon at 20% throtle output.
