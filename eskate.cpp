@@ -21,9 +21,6 @@ using namespace std;
 // CAN Bus
 string interface = "can0";
 
-// Initialize the Falcon 500 with CAN ID "0"
-TalonFX falcon(0, interface);
-
 /** simple wrapper for code cleanup */
 void delay(int ms) {
 	std::this_thread::sleep_for(std::chrono::milliseconds(ms));
@@ -40,12 +37,13 @@ int main() {
 
 	printf("Initializing Falcon 500...");
 
-	delay(5000);
+	// Initialize the Falcon 500 with CAN ID "0"
+	TalonFX falcon(0, interface);
 
 	// General configuraton.
 	// Set inverted so green output = forward motion.
 	// Set coast as neutral mode for 0 resistance.
-	falcon.SetInverted(true);
+	falcon.SetInverted(false);
 	falcon.SetNeutralMode(NeutralMode::Coast);
 
 	while (true) {
