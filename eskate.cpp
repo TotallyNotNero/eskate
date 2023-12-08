@@ -29,7 +29,9 @@ void delay(int ms) {
 int main() {
 
 	// Give Phoenix a delay to initialize the library
-	delay(5000);
+	delay(8000);
+
+	printf("Initializing CAN Bus...");
 
 	// Register the CAN Bus
 	ctre::phoenix::platform::can::RegisterCANbus(interface.c_str());
@@ -37,8 +39,10 @@ int main() {
 	// Delay once again to initialize SocketCAN first
 	delay(8000);
 
+	printf("Initializing Falcon 500...");
+
 	// Initialize the Falcon 500 with CAN ID "0"
-	TalonFX falcon(0);
+	TalonFX falcon(0, interface);
 
 	// General configuraton.
 	// Set inverted so green output = forward motion.
