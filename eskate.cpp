@@ -31,16 +31,10 @@ void delay(int ms) {
 
 int main() {
 
-	// Give Phoenix a delay to initialize the library
-	delay(8000);
-
 	printf("Initializing CAN Bus...");
 
 	// Register the CAN Bus
 	ctre::phoenix::platform::can::RegisterCANbus(interface.c_str());
-
-	// Delay once again to initialize SocketCAN first
-	delay(8000);
 
 	printf("Initializing Falcon 500...");
 
