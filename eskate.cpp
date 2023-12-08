@@ -31,7 +31,7 @@ void delay(int ms) {
 
 int main() {
 
-	cout << "Initializing CAN Bus..." << endl;
+	cout << "Initializing CAN Bus..." << endl << endl;
 	
 	delay(5000);
 
@@ -39,6 +39,8 @@ int main() {
 	ctre::phoenix::platform::can::RegisterCANbus(interface.c_str());
 
 	delay(5000);
+
+	cout << "Configuring Falcon 500..." << endl << endl;
 
 	// General configuraton.
 	// Set inverted so green output = forward motion.
