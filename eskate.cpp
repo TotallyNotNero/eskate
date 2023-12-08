@@ -50,7 +50,7 @@ int main() {
 
 	while (true) {
 		// Continuously set the Falcon at 20% throtle output.
-		falcon.Set(ControlMode::PercentOutput, 0.9);
+		falcon.Set(ControlMode::PercentOutput, 0.2);
 	}
 
 	return 0;
