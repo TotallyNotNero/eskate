@@ -49,8 +49,11 @@ int main() {
 	falcon.SetNeutralMode(NeutralMode::Brake);
 
 	while (true) {
-		// Continuously set the Falcon at 20% throtle output.
+
+		// Enable the devices present on the CTRE CAN Bus.
 		ctre::phoenix::unmanaged::Unmanaged::FeedEnable(1000);
+
+		// Continuously set the Falcon at 20% throtle output.
 		falcon.Set(ControlMode::PercentOutput, 0.2);
 	}
 
