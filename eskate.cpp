@@ -35,6 +35,8 @@ int main() {
 	// Register the CAN Bus
 	ctre::phoenix::platform::can::RegisterCANbus(interface.c_str());
 
+	delay(5000);
+
 	printf("Initializing Falcon 500...");
 
 	// Initialize the Falcon 500 with CAN ID "0"
