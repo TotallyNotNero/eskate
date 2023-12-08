@@ -28,11 +28,14 @@ void delay(int ms) {
 
 int main() {
 
+	// Give Phoenix a delay to initialize the library
+	delay(5000)
+
 	// Register the CAN Bus
 	ctre::phoenix::platform::can::RegisterCANbus(interface.c_str());
 
-	// Delay to initialize SocketCAN first
-	delay(12000);
+	// Delay once again to initialize SocketCAN first
+	delay(8000);
 
 	// Initialize the Falcon 500 with CAN ID "0"
 	TalonFX falcon(0);
