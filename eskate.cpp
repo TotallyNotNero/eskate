@@ -48,6 +48,9 @@ int main() {
 	falcon.SetInverted(false);
 	falcon.SetNeutralMode(NeutralMode::Brake);
 
+	// Configure motor-based PID values.
+	// Ensures that if we don't hit the desired output,
+	// the motor will try to make up for that error.
 	falcon.Config_kP(0, 0.25);
 	falcon.Config_kI(0, 0.0025);
 	falcon.Config_kD(0, 0.1);
