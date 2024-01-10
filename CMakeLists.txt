@@ -18,6 +18,7 @@ find_package(SDL2 REQUIRED)
 
 # The following folder will be included
 include_directories("${PROJECT_SOURCE_DIR}/include")
+include_directories("${PROJECT_SOURCE_DIR}/math")
 
 add_executable(eskate ${PROJECT_SOURCE_DIR}/eskate.cpp)
 

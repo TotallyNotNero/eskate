@@ -9,8 +9,7 @@
 #include <thread>
 #include <unistd.h>
 // #include <SDL2/SDL.h>
-// #include <math/RTime.h>
-// #include <math/PIDController.h>
+#include <math/PIDController.h>
 
 using namespace ctre::phoenix;
 using namespace ctre::phoenix::platform;
@@ -60,8 +59,11 @@ int main() {
 		// Enable the devices present on the CTRE CAN Bus.
 		ctre::phoenix::unmanaged::Unmanaged::FeedEnable(1000);
 
+		PIDController PID = PIDController(0.1, 100, -100, 0.1, 0.01, 0.5);
+		double output = PID.calculate(0, 0.2);
+
 		// Continuously set the Falcon at 10% throtle output.
-		falcon.Set(ControlMode::PercentOutput, 0.1);
+		falcon.Set(ControlMode::PercentOutput, output);
 	}
 
 	return 0;
