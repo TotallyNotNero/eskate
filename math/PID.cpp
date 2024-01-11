@@ -9,9 +9,9 @@ using namespace std;
 
 class PIDClass {
     public:
-        PIDClass(double dt, double max, double min, double Kp, double Kd, double Ki );
+        PIDClass(double dt, double max, double min, double Kp, double Kd, double Ki);
         ~PIDClass();
-        double calculate(double setpoint, double pv );
+        double calculate(double setpoint, double pv);
 
     private:
         double _dt;
@@ -47,7 +47,7 @@ PIDClass::PIDClass(double dt, double max, double min, double Kp, double Kd, doub
     _integral(0) {
 }
 
-double PIDClass::calculate(double setpoint, double pv ) {
+double PIDClass::calculate(double setpoint, double pv) {
     
     // Calculate error
     double error = setpoint - pv;
