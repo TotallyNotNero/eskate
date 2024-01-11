@@ -59,7 +59,7 @@ int main() {
 		// Enable the devices present on the CTRE CAN Bus.
 		ctre::phoenix::unmanaged::Unmanaged::FeedEnable(1000);
 
-		PIDController PID = PIDController(0.1, 100, -100, 0.1, 0.01, 0.5);
+		PIDController PID = PIDController(0.1, 0.001, 0.01, 0.1, 0.01, 0.5);
 		double output = PID.calculate(0, 0.2);
 
 		// Continuously set the Falcon at 10% throtle output.
