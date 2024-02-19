@@ -10,6 +10,7 @@
 #include <unistd.h>
 // #include <SDL2/SDL.h>
 #include <math/PIDController.h>
+#include <cmath>
 
 using namespace ctre::phoenix;
 using namespace ctre::phoenix::platform;
@@ -19,6 +20,14 @@ using namespace std;
 
 // CAN Bus
 string interface = "can0";
+
+// Convert Falcon's internal encoder resolution to inches travelled.
+// Based on the circumference of the board's wheels, does not currently 
+// take into account the belt ratio. 
+
+// Measures motor's positions in inches,
+// but will also measure velocity in inches per second.
+double ticksToInches = 10.0 / 2048.0 * (4.0 * M_PI);
 
 // Initialize the Falcon 500 with CAN ID "0"
 TalonFX falcon(0, interface);
@@ -64,6 +73,10 @@ int main() {
 
 		// Continuously set the Falcon at 10% throtle output.
 		falcon.Set(ControlMode::PercentOutput, output);
+
+		// Print our current drive velocity in inches per second.
+		// (How fast we are moving in a straight line).
+		cout << falcon.GetSelectedSensorVelocity(0) * ticksToInches << endl << endl;
 	}
 
 	return 0;
