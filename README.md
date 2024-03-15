@@ -33,5 +33,3 @@ located in the `math/` folder.
 
 # Links / References
 My final Minnetonka Research proposal is linked here.
-
-My blogpost running through my processes & in-depth thinkings during the skateboard's creation is linked here.
