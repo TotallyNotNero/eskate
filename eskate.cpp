@@ -33,6 +33,15 @@ void delay(int ms) {
 	std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
 
+/** Instruct the skateboard to move forward. Speed unit is in miles per hour. */
+void move(int speed) {
+
+	// Convert desired speed in miles per hour to the Falcon's
+	// native sensor units.
+	double coefficient = 2048.0 * 1.0 * 10.0 / 2048.0 * (4.0 * M_PI) * 63360.0 / 3600.0;
+	falcon.Set(ControlMode::Velocity, speed * coefficient);
+}
+
 int main() {
 
 	cout << "Initializing CAN Bus..." << endl << endl;
