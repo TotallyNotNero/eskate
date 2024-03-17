@@ -21,10 +21,6 @@ using namespace std;
 // CAN Bus
 string interface = "can0";
 
-// Convert Falcon's internal encoder resolution to inches travelled.
-// Based on the circumference of the board's wheels, does not currently 
-// take into account the belt ratio. 
-
 // Initialize the Falcon 500 with CAN ID "0"
 TalonFX falcon(0, interface);
 
@@ -38,7 +34,7 @@ void move(int speed) {
 
 	// Convert desired speed in miles per hour to the Falcon's
 	// native sensor units.
-	double coefficient = 2048.0 * 1.0 * 10.0 / 2048.0 * (4.0 * M_PI) * 63360.0 / 3600.0;
+	double coefficient = 2048.0 * 10.0 / 2048.0 * (4.0 * M_PI) * 63360.0 / 3600.0;
 	falcon.Set(ControlMode::Velocity, speed * coefficient);
 }
 
@@ -78,8 +74,10 @@ int main() {
 
 		// Continuously set the Falcon at 10% throtle output.
 		falcon.Set(ControlMode::PercentOutput, output);
-
-		// Measures motor velocity in inches per second.
+		
+		// We must convert the Falcon's internal encoder resolution to inches travelled.
+		// This rough, hacky formula is based on the circumference of the board's wheels.
+		// For simplicity's sake, the belt ratio is not taken into account.
 		// (10) / (falcon_sensor_units_per_rotation) * (wheel_diameter * PI)
 		double ticksToInches = 10.0 / 2048.0 * (4.0 * M_PI);
 
