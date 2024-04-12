@@ -38,7 +38,7 @@ void move(int speed) {
 	falcon.Set(ControlMode::Velocity, speed * coefficient);
 }
 
-int main() {
+int main(int argc, char *argv[]) {
 
 	cout << "Initializing CAN Bus..." << endl << endl;
 	
@@ -69,8 +69,7 @@ int main() {
 		// Enable the devices present on the CTRE CAN Bus.
 		ctre::phoenix::unmanaged::Unmanaged::FeedEnable(1000);
 
-		PIDController PID = PIDController(0.1, 0.001, 0.01, 0.1, 0.01, 0.5);
-		double output = PID.calculate(0, 0.2);
+		double output = stod(argv[0]);
 
 		// Continuously set the Falcon at 10% throtle output.
 		falcon.Set(ControlMode::PercentOutput, output);
@@ -79,11 +78,11 @@ int main() {
 		// This rough, hacky formula is based on the circumference of the board's wheels.
 		// For simplicity's sake, the belt ratio is not taken into account.
 		// (10) / (falcon_sensor_units_per_rotation) * (wheel_diameter * PI)
-		double ticksToInches = 10.0 / 2048.0 * (4.0 * M_PI);
+		// double ticksToInches = 10.0 / 2048.0 * (4.0 * M_PI);
 
 		// Convert our velocity from inches per second to miles per hour.
 		// (falcon_sensor_units_per_100ms) * (ticksToInches) / (inches_per_mile) / (seconds_per_hour)
-		double vel = falcon.GetSelectedSensorVelocity(0) * ticksToInches / 63360.0 / 3600.0;
+		// double vel = falcon.GetSelectedSensorVelocity(0) * ticksToInches / 63360.0 / 3600.0;
 	}
 
 	return 0;
